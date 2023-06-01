@@ -32,7 +32,7 @@
 		}
 	%>
 	<div class="container">
-		<div class="display-4">
+		<div class="display-4 mb-2">
 			BMI 측정 결과
 		</div>
 		<div class="display-4">
