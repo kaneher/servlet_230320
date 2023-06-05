@@ -150,7 +150,12 @@ header {
 		<section class="content2">
 			<jsp:include page="content2.jsp"/>
 		</section>
-		<jsp:include page="content3.jsp"/>
+		<section class="content3 border border-success p-2 mb-4">
+			<jsp:include page="content3.jsp"/>
+		</section>
+		<section class="content4">
+			<jsp:include page="content4.jsp"/>
+		</section>
 		<hr>
 		<footer>
 			<jsp:include page="footer.jsp"/>

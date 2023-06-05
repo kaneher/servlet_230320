@@ -77,38 +77,29 @@
 	
 	for (int i = 0; i < musicList.size(); i++) {
 		Map<String, Object> maps = musicList.get(i);
-		if (maps.get("title").equals(search)) {
 %>
-	<section class="content3 border border-success p-2 mb-4">
 		<h1 class="font-weight-bold">곡 정보</h1>
 		<div class="d-flex">
 			<img src="<%=maps.get("thumbnail")%>" alt="album" width="230" height="230" class="mr-5">
 			<div>
 				<div class="display-4 mb-2"><%=maps.get("title")%></div>
 				<h4 class="font-weight-bold text-success mb-3"><%=maps.get("singer")%></h4>
-				<div>
-					<span class="text-secondary mr-5">앨범</span>
-					<span class="text-secondary"><%=maps.get("album")%></span>
-				</div>
-				<div>
-					<span class="text-secondary mr-3">재생시간</span>
-					<span class="text-secondary"><%=maps.get("time")%></span>
-				</div>
-				<div>
-					<span class="text-secondary mr-4">작곡가</span>
-					<span class="text-secondary"><%=maps.get("composer")%></span>
-				</div>
-				<div>
-					<span class="text-secondary mr-4">작사가</span>
-					<span class="text-secondary"><%=maps.get("lyricist")%></span>
+				<div class="d-flex">
+					<div class="mr-5">
+						<span class="d-block text-secondary">앨범</span>
+						<span class="d-block text-secondary">재생시간</span>
+						<span class="d-block text-secondary">작곡가</span>
+						<span class="d-block text-secondary">작사가</span>
+					</div>
+					<div>
+						<span class="d-block text-secondary"><%=maps.get("album")%></span>
+						<span class="d-block text-secondary"><%=maps.get("time")%></span>
+						<span class="d-block text-secondary"><%=maps.get("composer")%></span>
+						<span class="d-block text-secondary"><%=maps.get("lyricist")%></span>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
 <%
-		}
 	}
 %>
-	<h2 class="font-weight-bold">가사</h2>
-	<hr>
-	<h4>가사 정보 없음</h4>
