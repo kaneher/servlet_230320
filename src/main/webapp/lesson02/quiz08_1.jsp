@@ -61,6 +61,20 @@
 		int id = Integer.parseInt(request.getParameter("id"));
 	%>
 	
+	<%
+		// 태그에 보여줄 책 정보 하나 뽑아내기
+		/*
+		int id = Integer.parseInt(request.getParameter("id"));
+		Map<String, Object> target = new HashMap<>(); // {}
+		for (Map<String, Object> item : list) {
+			if ((int)item.get("id") == id) {
+				target = item;
+				break;
+			}
+		}
+		*/
+	%>
+	
 	<div class="container d-flex">
 		<%
 			Iterator<Map<String, Object>> iter = list.iterator();
@@ -68,9 +82,11 @@
 				Map<String, Object> maps = iter.next();
 				if ((int)maps.get("id") == id) {
 		%>
-		<div><img src="<%= maps.get("image") %>"></div>
 		<div>
-			<div class="display-2 font-weight-bold"><%= maps.get("title") %></div>
+			<img src="<%= maps.get("image") %>" alt="bookCover" width="300">
+		</div>
+		<div>
+			<span class="display-1 font-weight-bold d-block"><%= maps.get("title") %></span>
 			<div class="display-3 text-info"><%= maps.get("author") %></div>
 			<div class="display-4 text-secondary"><%= maps.get("publisher") %></div>
 		</div>
