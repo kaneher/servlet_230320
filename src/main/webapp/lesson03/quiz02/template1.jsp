@@ -1,9 +1,75 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>멜롱</title>
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+	crossorigin="anonymous"></script>
+
+<style>
+#wrap {
+	min-height: 1200px;
+}
+
+header {
+	height: 80px;
+}
+
+.aTitle:hover {
+	text-decoration : none;
+}
+
+.text {
+	width: 400px;
+}
+
+.nav-item {
+	font-size: 18px;
+}
+
+.content1 {
+	min-height: 200px;
+}
+
+.content2 {
+	min-height: 300px;
+}
+
+.cTitle:hover {
+	text-decoration : none;
+}
+
+</style>
+
+</head>
+<body>
+
+	<%
+	// 아티스트 정보 
+
+	Map<String, Object> artistInfo = new HashMap<>();
+	artistInfo.put("name", "아이유");
+	artistInfo.put("debut", 2008);
+	artistInfo.put("agency", "EDAM엔터테인먼트");
+	artistInfo.put("photo", "http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG");
+
+	// 아이유 노래 리스트 
 	List<Map<String, Object>> musicList = new ArrayList<>();
-	
+
 	Map<String, Object> musicInfo = new HashMap<>();
 	musicInfo.put("id", 1);
 	musicInfo.put("title", "팔레트");
@@ -14,7 +80,7 @@
 	musicInfo.put("composer", "아이유");
 	musicInfo.put("lyricist", "아이유");
 	musicList.add(musicInfo);
-	
+
 	musicInfo = new HashMap<>();
 	musicInfo.put("id", 2);
 	musicInfo.put("title", "좋은날");
@@ -25,7 +91,7 @@
 	musicInfo.put("composer", "이민수");
 	musicInfo.put("lyricist", "김이나");
 	musicList.add(musicInfo);
-	
+
 	musicInfo = new HashMap<>();
 	musicInfo.put("id", 3);
 	musicInfo.put("title", "밤편지");
@@ -36,7 +102,7 @@
 	musicInfo.put("composer", "제휘,김희원");
 	musicInfo.put("lyricist", "아이유");
 	musicList.add(musicInfo);
-	
+
 	musicInfo = new HashMap<>();
 	musicInfo.put("id", 4);
 	musicInfo.put("title", "삐삐");
@@ -48,7 +114,7 @@
 	musicInfo.put("composer", "이종훈");
 	musicInfo.put("lyricist", "아이유");
 	musicList.add(musicInfo);
-	
+
 	musicInfo = new HashMap<>();
 	musicInfo.put("id", 5);
 	musicInfo.put("title", "스물셋");
@@ -60,7 +126,7 @@
 	musicInfo.put("composer", "아이유,이종훈,이채규");
 	musicInfo.put("lyricist", "아이유");
 	musicList.add(musicInfo);
-	
+
 	musicInfo = new HashMap<>();
 	musicInfo.put("id", 6);
 	musicInfo.put("title", "Blueming");
@@ -72,34 +138,24 @@
 	musicInfo.put("composer", "아이유,이종훈,이채규");
 	musicInfo.put("lyricist", "아이유");
 	musicList.add(musicInfo);
-	
-	String search = request.getParameter("search");
-	
-	for (int i = 0; i < musicList.size(); i++) {
-		Map<String, Object> maps = musicList.get(i);
-%>
-		<h1 class="font-weight-bold">곡 정보</h1>
-		<div class="d-flex">
-			<img src="<%=maps.get("thumbnail")%>" alt="album" width="230" height="230" class="mr-5">
-			<div>
-				<div class="display-4 mb-2"><%=maps.get("title")%></div>
-				<h4 class="font-weight-bold text-success mb-3"><%=maps.get("singer")%></h4>
-				<div class="d-flex">
-					<div class="mr-5">
-						<span class="d-block text-secondary">앨범</span>
-						<span class="d-block text-secondary">재생시간</span>
-						<span class="d-block text-secondary">작곡가</span>
-						<span class="d-block text-secondary">작사가</span>
-					</div>
-					<div>
-						<span class="d-block text-secondary"><%=maps.get("album")%></span>
-						<span class="d-block text-secondary"><%=maps.get("time")%></span>
-						<span class="d-block text-secondary"><%=maps.get("composer")%></span>
-						<span class="d-block text-secondary"><%=maps.get("lyricist")%></span>
-					</div>
-				</div>
-			</div>
-		</div>
-<%
-	}
-%>
+	%>
+
+	<div id="wrap" class="container">
+		<header class="d-flex align-items-center mb-4">
+			<jsp:include page="header.jsp"/>
+		</header>
+		
+		<jsp:include page="nav.jsp"/>
+		
+		<section class="content1">
+			<jsp:include page="content1.jsp"/>
+		</section>
+		
+		<hr>
+		
+		<footer>
+			<jsp:include page="footer.jsp"/>
+		</footer>
+	</div>
+</body>
+</html>

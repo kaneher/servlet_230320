@@ -1,6 +1,6 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +29,16 @@ header {
 	height: 80px;
 }
 
+.aTitle:hover {
+	text-decoration : none;
+}
+
 .text {
 	width: 400px;
 }
 
 .nav-item {
-	font-size: 22px;
+	font-size: 18px;
 }
 
 .content1 {
@@ -45,13 +49,10 @@ header {
 	min-height: 300px;
 }
 
-.content3 {
-	min-height: 200px;
+.cTitle:hover {
+	text-decoration : none;
 }
 
-.content4 {
-	min-height: 200px;
-}
 </style>
 
 </head>
@@ -143,20 +144,15 @@ header {
 		<header class="d-flex align-items-center mb-4">
 			<jsp:include page="header.jsp"/>
 		</header>
+		
 		<jsp:include page="nav.jsp"/>
-		<section class="content1 border border-success p-2 d-flex align-items-start mb-4">
-			<jsp:include page="content1.jsp"/>
-		</section>
+		
 		<section class="content2">
 			<jsp:include page="content2.jsp"/>
 		</section>
-		<section class="content3 border border-success p-2 mb-4">
-			<jsp:include page="content3.jsp"/>
-		</section>
-		<section class="content4">
-			<jsp:include page="content4.jsp"/>
-		</section>
+		
 		<hr>
+		
 		<footer>
 			<jsp:include page="footer.jsp"/>
 		</footer>

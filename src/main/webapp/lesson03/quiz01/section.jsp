@@ -148,19 +148,12 @@ list.add(map);
 		</thead>
 		<tbody>
 			<%
-			String category = request.getParameter("category");
+			String category = request.getParameter("category"); // null(전체) 또는 카테고리
 			Iterator<Map<String, String>> iter = list.iterator();
 			while (iter.hasNext()) {
 				Map<String, String> maps = iter.next();
-				if (maps.get("category").equals(category)) {
-			%>		
-			<tr>
-				<td><%=maps.get("ch")%></td>
-				<td><%=maps.get("name")%></td>
-				<td><%=maps.get("category")%></td>
-			</tr>
-			<%
-				} else if (category == null) {
+				// 카테고리가 null일 때(전체) 또는 카테고리명이 일치할 때
+				if (maps.get("category").equals(category) || category == null) {
 			%>		
 			<tr>
 				<td><%=maps.get("ch")%></td>

@@ -1,7 +1,6 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
 <%
 	List<Map<String, Object>> musicList = new ArrayList<>();
 	
@@ -73,29 +72,47 @@
 	musicInfo.put("composer", "아이유,이종훈,이채규");
 	musicInfo.put("lyricist", "아이유");
 	musicList.add(musicInfo);
+	
+	String search = request.getParameter("search");
+	String idStr = request.getParameter("id");
+	int id = 0;
+	if (idStr != null) {
+		id = Integer.parseInt(request.getParameter("id"));
+	}
+	
+	for (int i = 0; i < musicList.size(); i++) {
+		Map<String, Object> maps = musicList.get(i);
+		if ((search != null && search.equals(maps.get("title"))) || (search == null && id == (int)maps.get("id"))) {
+%>
+<h4 class="font-weight-bold mb-2">곡 정보</h4>
+	<section class="border border-success p-3 mb-5">
+		<div class="d-flex">
+			<img src="<%=maps.get("thumbnail")%>" alt="album" width="230" height="230" class="mr-5">
+			<div>
+				<div class="display-4 mb-2"><%=maps.get("title")%></div>
+				<h4 class="font-weight-bold text-success mb-3"><%=maps.get("singer")%></h4>
+				<div class="d-flex">
+					<div class="mr-5">
+						<span class="d-block text-secondary">앨범</span>
+						<span class="d-block text-secondary">재생시간</span>
+						<span class="d-block text-secondary">작곡가</span>
+						<span class="d-block text-secondary">작사가</span>
+					</div>
+					<div>
+						<span class="d-block text-secondary"><%=maps.get("album")%></span>
+						<span class="d-block text-secondary"><%=(int)maps.get("time") / 60%> : <%= (int)maps.get("time") % 60 %></span>
+						<span class="d-block text-secondary"><%=maps.get("composer")%></span>
+						<span class="d-block text-secondary"><%=maps.get("lyricist")%></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<%
+		}
+	}
 %>
 
-<h2 class="font-weight-bold mb-3">곡 목록</h2>
-<table class="table text-center">
-	<thead>
-		<tr class="row">
-			<th class="col-2">no</th>
-			<th class="col-4">제목</th>
-			<th class="col-6">앨범</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%
-		for (int i = 0; i < musicList.size(); i++) {
-			Map<String, Object> maps = musicList.get(i);
-		%>
-		<tr class="row">
-			<td class="col-2"><%=maps.get("id")%></td>
-			<td class="col-4"><a href="content3.jsp?title=<%= maps.get("title") %>"><%=maps.get("title")%></a></td>
-			<td class="col-6"><%=maps.get("album")%></td>
-		</tr>
-		<%
-		}
-		%>
-	</tbody>
-</table>
+<h4 class="font-weight-bold">가사</h4>
+<hr>
+<div class="font-weight-bold">가사 정보 없음</div>
